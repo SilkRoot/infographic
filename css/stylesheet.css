@@ -1,0 +1,85 @@
+/*################ general ################*/
+
+body {
+	font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+	background-color: #dadada;
+}
+
+/*################ IDs ################*/
+
+#wrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#headline {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#symbols {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 200px;
+}
+
+#clinton {
+	float: left;
+	padding-top: 50px;
+	margin-left: -10px;
+}
+
+#trump {
+	float: right;
+	padding-top: 35px;
+	margin-right: -10px;
+
+}
+
+/*################ CLASSES ################*/
+
+.states {
+/*  stroke: #000;*/
+    fill-opacity: .7;
+}
+
+.symbol {
+    fill: steelblue;
+    fill-opacity: .8;
+    stroke: #fff;
+}
+
+.left {
+	float: left;
+	padding-left: 150px;
+}
+
+.right {
+	float: right;
+	padding-right: 150px;
+}
+/*
+.chart div {
+	font: 10px sans-serif;
+	background-color: #202C55;/*DEMOCRATS*/
+/*	background-color: #BE1225;/*REPUBLICANS*/
+/*	text-align: right;
+	padding: 3px;
+	margin: 1px;
+	color: white;
+}*/
+
+
+
+.chart rect {
+  fill: #202C55;
+  background-color: #202C55;
+}
+
+.chart text {
+  fill: white;
+  font-size: 10px;
+  text-anchor: end;
+}
+
+
