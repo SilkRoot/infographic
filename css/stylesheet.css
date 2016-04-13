@@ -33,10 +33,14 @@ body {
 	float: right;
 	padding-top: 35px;
 	margin-right: -10px;
-
 }
 
 /*################ CLASSES ################*/
+
+.image {
+	width: 10%;
+    height: auto;
+}
 
 .states {
 /*  stroke: #000;*/
