@@ -1,7 +1,10 @@
 /* ############### creating color array ###############*/
 var ids_arr = ['0','21','19','31','25','34','1','26','38','12','3','8','18','20','9','28','13','11','50','22','2','32','49','30','5','10','4','27','37','15','7','6','29','14','16','17','23','40','24','36','33','48','41','39','42','47','45','43','44','46','78','72'];
-var color_arr = ['#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#A0A0A0','#A0A0A0']
+var color_arr = ['#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#202C55','#A0A0A0','#A0A0A0'];
 var colors_arr = [];
+var colors_arr_rep = ['#A0A0A0','#A0A0A0','#EFE74B','#A0A0A0','202C55','#EFE74B','#542145','#EFE74B','#A0A0A0','#A0A0A0','#542145','#542145','#A0A0A0','#EFE74B','#542145','#A0A0A0','#542145','#542145','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#EFE74B','#542145','#20512C','#A0A0A0','#A0A0A0','#A0A0A0','#A0A0A0','#542145','#EFE74B','#A0A0A0','#A0A0A0','#542145','#542145','#542145','#EFE74B','#A0A0A0','#542145','#542145','#EFE74B','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#542145','#EFE74B'];
+colors_arr_rep[72] = '#A0A0A0';
+colors_arr_rep[78] = '#A0A0A0';
 var h = "";
 var g = 0;
 var arrayLength = ids_arr.length;
@@ -48,7 +51,7 @@ function ready(error, us, centroid) {
         .attr("class", "states")
         .attr("d", path)
         .style('fill', function(d,i) {
-            return colors_arr[i]
+            return colors_arr_rep[i]
         })
         .on('mouseover', function(d, i) {
 
@@ -84,7 +87,7 @@ function barchart(field){
 
     console.log("the current field is: " + field);//control print to console
 
-    d3.tsv("./data/data_dem.tsv", type, function(error, data) {//open csv file
+    d3.tsv("./data/data_rep.tsv", type, function(error, data) {//open csv file
         x.domain([0, d3.max(data, function(d) { return d[field]; })]);
         console.log("the file data.tsv is now loaded");
 
@@ -124,7 +127,7 @@ function update(field) {
     console.log("An update was triggered!");
     console.log("the current field is: " + field);//control print to console
 
-    d3.tsv("./data/data_dem.tsv", type, function(error, data) {//open csv file
+    d3.tsv("./data/data_rep.tsv", type, function(error, data) {//open csv file
         x.domain([0, d3.max(data, function(d) { return d[field]; })]);
         console.log("the file data.tsv is now loaded");
 
