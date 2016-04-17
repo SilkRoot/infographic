@@ -71,14 +71,14 @@ function ready(error, us, centroid) {
 }
 
 /* ############### barchart ###############*/
-var width = 420,//maximum width of a bar
-        barHeight = 20;//barheight
+var width_chart = 820,//maximum width of a bar
+    barHeight = 20;//barheight
 
-    var x = d3.scale.linear()//define scale type
-        .range([0, width]);//define range, so it's adapted to the size
+var x = d3.scale.linear()//define scale type
+    .range([0, width_chart]);//define range, so it's adapted to the size
 
-    var chart = d3.select(".chart")//css3 selector
-        .attr("width", width);//apply style to <svg class="chart">
+var chart = d3.select(".chart")//css3 selector
+    .attr("width", width_chart);//apply style to <svg class="chart">
 
 function barchart(field){
 
