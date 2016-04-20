@@ -32,7 +32,17 @@ body {
 #trump {
 	float: right;
 	padding-top: 35px;
-	margin-right: -10px;
+	margin-right: 20px;
+}
+#chart_text {
+	font-size: 13.3px;
+	text-align: right;
+	line-height: 20.5px;
+	margin-top: -3px;
+}
+
+#donkey {
+	opacity: 0.4;
 }
 
 /*################ CLASSES ################*/

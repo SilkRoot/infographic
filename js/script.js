@@ -13,25 +13,15 @@ for (var j = 0; j < arrayLength; j++) {
     h = color_arr[j];
     colors_arr[g] = h;
 }
-
-for(var j = 0; j < colors_arr.length; j++){
-    console.log(j + " = " + colors_arr[j]);
-}
-
 var viewportwidth = window.innerWidth;
 var viewportheight = window.innerHeight;
-
 var field = 0;
 
 /* ############### map ###############*/
-
 var width = 960,
     height = 500;
-
 var path = d3.geo.path();
-
 var color;
-
 var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height);
@@ -53,44 +43,33 @@ function ready(error, us, centroid) {
         .style('fill', function(d,i) {
             return colors_arr_rep[i]
         })
+        .style("stroke", "#dadada")
+        .style("stroke-width", .5)
         .on('mouseover', function(d, i) {
 
         	var currentState = this;
         	d3.select(this).style('fill-opacity', 1);
-            console.log(i);
-            console.log(d);
             update(i);
-            d3.select(".opacity_corr").style('fill-opacity', 1);
-            d3.select(".opacity_corr2").style('fill-opacity', 1);
         })
         .on('mouseout', function(d, i) {
             d3.selectAll('path')
 	            .style({
                     'fill-opacity':.7
                 });
-            d3.select(".opacity_corr").style('fill-opacity', 1);
-            d3.select(".opacity_corr2").style('fill-opacity', 1);
         });
 }
 
 /* ############### barchart ###############*/
-var width_chart = 820,//maximum width of a bar
+var width_chart = 470,//maximum width of a bar
     barHeight = 20;//barheight
-
 var x = d3.scale.linear()//define scale type
-    .range([0, width_chart]);//define range, so it's adapted to the size
-
+    .range([0, width_chart])//define range, so it's adapted to the size
 var chart = d3.select(".chart")//css3 selector
     .attr("width", width_chart);//apply style to <svg class="chart">
 
 function barchart(field){
-
-    console.log("the current field is: " + field);//control print to console
-
     d3.tsv("./data/data_rep.tsv", type, function(error, data) {//open csv file
-        x.domain([0, d3.max(data, function(d) { return d[field]; })]);
-        console.log("the file data.tsv is now loaded");
-
+        x.domain([0, 150]);
         chart.attr("height", barHeight * data.length);
 
         var bar = chart.selectAll("g")
@@ -111,10 +90,25 @@ function barchart(field){
             .attr("height", barHeight - 1);
 
         bar.append("text")
-            .attr("x", function(d) { return x(d[field] - 3); })
+            //.attr("x", function(d) { return x(d[field] - 1); })
+            .attr("x", function(d) { 
+                var dump = x(d[field]);
+                if (dump < 20){
+                    return dump + 20;
+                } else {
+                    return dump - 3;
+                }
+            })
             .attr("y", barHeight / 2)
             .attr("dy", ".35em")
-            .text(function(d) { return d[field]; });
+            .text(function(d) { return d[field]; })
+            .style('fill', function(d) {
+                if (x(d[field]) < 20 && x(d[field]) != 0){
+                    return 'black';
+                } else if (x(d[field]) == 0){
+                    return '#dadada';
+                }
+            });
     });
 }
 
@@ -124,13 +118,8 @@ function type(d) {
 }
 
 function update(field) {
-    console.log("An update was triggered!");
-    console.log("the current field is: " + field);//control print to console
-
     d3.tsv("./data/data_rep.tsv", type, function(error, data) {//open csv file
-        x.domain([0, d3.max(data, function(d) { return d[field]; })]);
-        console.log("the file data.tsv is now loaded");
-
+        x.domain([0, 150]);
         chart.attr("height", barHeight * data.length);
 
         var bar = chart.selectAll("g")
@@ -145,17 +134,34 @@ function update(field) {
         bar.selectAll("rect")
             .transition()
             .delay(50)
-            .duration(200)
+            .duration(400)
             .ease("linear")
             .attr("width", function(d) { return x(d[field]); })
             .attr("height", barHeight - 1);
 
         bar.selectAll("text")
-            .attr("x", function(d) { return x(d[field] - 1); })
+            .transition()
+            .delay(50)
+            .duration(400)
+            .ease("linear")
+            .attr("x", function(d) { 
+                var dump = x(d[field]);
+                if (dump < 20){
+                    return dump + 20;
+                } else {
+                    return dump - 3;
+                }
+            })
             .attr("y", barHeight / 2)
             .attr("dy", ".35em")
-            .text(function(d) { return d[field]; });
+            .text(function(d) { return d[field]; })
+            .style('fill', function(d) {
+                if (x(d[field]) < 20 && x(d[field]) != 0){
+                    return 'black';
+                } else if (x(d[field]) == 0){
+                    return '#dadada';
+                }
+            });
     });
 };
-
 window.onload = barchart(0);

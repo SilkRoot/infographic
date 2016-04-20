@@ -23,16 +23,9 @@
 		</div>
 		<div id="wrapper">
 			<div id="headline">
-				<svg version="1.1" 
-					 id="Ebene_1" 
-					 xmlns="http://www.w3.org/2000/svg" 
-					 xmlns:xlink="http://www.w3.org/1999/xlink" 
-					 x="0px" y="0px"
-		 			 width="800px"
-		 			 height="100px"
-		 			 viewBox="0 0 800 100" 
-		 			 enable-background="new 0 0 800 100" 
-		 			 xml:space="preserve">
+				<svg version="1.1" id="Ebene_1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+					 x="0px" y="0px" width="800px" height="100px" viewBox="0 0 800 100" 
+		 			 enable-background="new 0 0 800 100" xml:space="preserve">
 					<polygon fill="#202C55" 
 							 points="752.99,49.255 800,22.508 0,22.581 47.009,49.327 0,76.073 800,76.001 "/>
 					<text transform="matrix(1 0 0 1 63.3481 65.0742)" fill="#FFFFFF" font-size="41.4136">PRIMARY ELECTION 2016 IN THE US</text>
@@ -41,14 +34,21 @@
 			<div id="map"></div>
 			<div id="symbols">
 				<div class="left">
-						<img src="./images/elephant.svg" alt="the elephant - symbol of the republicans">
+					<a href="url"><img src="./images/elephant.svg" alt="the elephant - symbol of the republicans"></a>
 				</div>
-				<div class="right">
-					<img src="./images/donkey.svg" alt="the elephant - symbol of the republicans">
+				<div class="right" id="donkey">
+					<a href="url"><img src="./images/donkey.svg" alt="the elephant - symbol of the republicans"></a>
 				</div>
 				
 			</div><!--symbols-->
-			<svg class="chart"></svg>
+			<div class="left">
+				<div id="chart_text">
+					Donald Trump - Precentage<br>Donald Trump - Delegates<br>Ted Cruz - Precentage<br>Ted Cruz - Delegates<br>Mark Rubio - Precentage<br>Mark Rubio - Delegates<br>John Kasich - Precentage<br>John Kasich - Delegates<br>
+				</div>
+			</div>
+			<div class="right">
+				<svg class="chart"></svg>
+			</div>
 		</div><!--wrapper-->
 
 		<!--script to load asynchronous JavaScript, otherwise DOM is not ready when the script is loaded-->
